@@ -1,25 +1,19 @@
-import { SchemaOptions } from '@nestjs/mongoose';
-import { Document, SchemaDefinition } from 'mongoose';
-
-export interface SharedModel extends Document {
-  createdAt?: Date;
-  updatedAt?: Date;
-}
-
-export const SharedDefinition: SchemaDefinition = {
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now(),
-  },
-};
+import { Schema, SchemaOptions } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 export const schemaOptions: SchemaOptions = {
+  timestamps: {
+    createdAt: true,
+    updatedAt: true,
+  },
   toJSON: {
     virtuals: true,
     getters: true,
   },
 };
+
+@Schema(schemaOptions)
+export class SharedModel extends Document {
+  createdAt?: Date;
+  updatedAt?: Date;
+}
