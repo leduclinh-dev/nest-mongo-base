@@ -1,20 +1,21 @@
 import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { UserRole, UserStatus } from '.';
-import { SharedModel } from '../../shared/shared.model';
 
 export const USER_MODEL = 'User';
 export type UserDocument = User & Document;
 
 @Schema()
-class User extends SharedModel {
+export class User {
+  _id: string;
+
   @Prop()
   username: string;
 
   @Prop()
   password: string;
 
-  @Prop()
+  @Prop({ unique: true })
   email: string;
 
   @Prop({ default: false })

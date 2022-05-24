@@ -10,6 +10,7 @@ import { HttpExceptionFilter } from './shared/filters';
 import { TransformResponseInterceptor } from './shared/interceptors';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { UserModule } from './user/user.module';
 
     SharedModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
